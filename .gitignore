@@ -39,7 +39,6 @@ $RECYCLE.BIN/
 *.log
 
 Generated_Code/
-*.designer.cs
 *_i.c
 *_p.c
 *.ilk
