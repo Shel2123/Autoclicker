@@ -114,10 +114,20 @@ namespace Autoclicker.UI
                 try
                 {
                     var (loop, rows) = _store.Load(ofd.FileName);
-                    _rows.Clear(); foreach (var r in rows) _rows.Add(r);
-                    chkLoop.Checked = loop; Log($"Loaded: {ofd.FileName}");
+                    _rows.Clear();
+                    foreach (var r in rows) _rows.Add(r);
+                    chkLoop.Checked = loop;
+                    Log($"Loaded: {ofd.FileName}");
                 }
-                catch { MessageBox.Show("Invalid file format", "Load", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Invalid file format:\n{ex.GetType().Name}: {ex.Message}",
+                        "Load",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
             }
         }
 
